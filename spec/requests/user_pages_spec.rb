@@ -89,7 +89,7 @@ describe "User pages" do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
       end
 
       describe "after saving the user" do
@@ -97,7 +97,7 @@ describe "User pages" do
         let(:user) { User.find_by_email('user@example.com') }
 
         it { should have_selector('title', text: user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome to Project Page One') }
         it { should have_link('Sign out') }
       end
 
