@@ -1,4 +1,11 @@
 Pp1::Application.routes.draw do
+  
+  scope "api" do
+    resources :art_objects
+  end
+
+  match '/art_objects', to: 'art_objects#index'
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

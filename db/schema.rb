@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513001855) do
+ActiveRecord::Schema.define(:version => 20130530163927) do
+
+  create_table "art_objects", :force => true do |t|
+    t.string   "name"
+    t.integer  "creator"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

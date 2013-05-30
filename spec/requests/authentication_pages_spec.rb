@@ -43,10 +43,35 @@ describe "Authentication" do
       end
     end
 
+    describe "without valid information" do
+      let(:user) { FactoryGirl.create(:user) }
+
+
+      it { should_not have_link('Profile', href: user_path(user)) }
+      it { should_not have_link('Settings', href: edit_user_path(user)) }
+      it { should have_link('Sign in', href: signin_path) }
+
+    end
+
 
   end
 
   describe "authorization" do
+
+    describe "for signed in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+
+      describe "using a 'new' action" do
+          before { get new_user_path }
+          specify { response.should redirect_to(root_path) }
+      end
+
+      describe "using a 'create' action" do
+          before { post users_path }
+          specify { response.should redirect_to(root_path) }
+      end         
+    end
 
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
@@ -106,6 +131,7 @@ describe "Authentication" do
         before { delete user_path(user) }
         specify { response.should redirect_to(root_path) }        
       end
+
     end
   end
 end
