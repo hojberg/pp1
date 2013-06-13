@@ -1,0 +1,5 @@
+<h2>Change an object</h2>
+<form id="new_entry">
+  <input type="text" name="name" id="new_entry_name" value="<%= @entry.get('name') %>">
+  <input type="submit" value="Update">
+</form>

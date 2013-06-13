@@ -1,13 +1,15 @@
 Pp1::Application.routes.draw do
   
+  
   scope "api" do
-    resources :art_objects
+    match '/art_objects', to: 'art_objects#index'
   end
 
-  match '/art_objects', to: 'art_objects#index'
+  match "/art_objects/*path", to: "art_objects#index"
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :art_objects
 
   root to: 'static_pages#home'
 
@@ -18,6 +20,7 @@ Pp1::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -5,7 +5,7 @@ window.Pp1 =
   Routers: {}
   initialize: ->
   	new Pp1.Routers.ArtObjects()
-  	Backbone.history.start()
+  	Backbone.history.start(pushState: true)
 
 $(document).ready ->
   Pp1.initialize()

@@ -1,0 +1,8 @@
+<td><%= @entry.get('id') %></td>
+<td><%= @entry.get('name') %></td>
+<td></td>
+<td class="btn-group">
+  <button class="btn"><a href="art_objects/<%= @entry.get('id') %>">Show</a></button>
+  <button class="btn">Edit</button>
+  <button class="btn"><a href="#" class="destroy">Delete</a></button>
+</td>
